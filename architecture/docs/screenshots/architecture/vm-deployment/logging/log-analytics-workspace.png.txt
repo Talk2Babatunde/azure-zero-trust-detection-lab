@@ -1,0 +1,1 @@
+Log Analytics Workspace (LAW) Deployment	Confirms the creation of law-zero-trust-soc. This serves as the "Centralized Data Lake" where all logs from the Hub and Spokes are aggregated, indexed, and stored for long-term retention.

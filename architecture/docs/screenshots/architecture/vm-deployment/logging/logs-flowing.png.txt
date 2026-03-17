@@ -1,0 +1,1 @@
+Multi-VNet Telemetry Heartbeat Validation	**** This is the ultimate proof that the pipeline works. It shows a KQL heartbeat query confirming that logs are successfully flowing from the Hub, Spoke 1, and Spoke 2 into the central workspace.

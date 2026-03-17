@@ -1,0 +1,1 @@
+Bi-Directional VNet Peering & Traffic Forwarding	**** Shows the peering status as "Connected." Crucially, it demonstrates that "Allow Forwarded Traffic" is enabled, which is required for the Spokes to communicate through the Hub's security stack.

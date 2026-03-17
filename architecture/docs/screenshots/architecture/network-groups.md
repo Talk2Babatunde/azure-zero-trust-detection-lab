@@ -1,0 +1,1 @@
+Dynamic Membership & Azure Virtual Network Manager	Proof of using Azure Virtual Network Manager (AVNM) to scale security. It shows the grouping of Spokes into a "Network Group," allowing for the centralized application of connectivity and security policies.

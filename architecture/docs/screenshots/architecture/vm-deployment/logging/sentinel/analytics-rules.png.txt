@@ -1,0 +1,1 @@
+Custom KQL Detection Engineering & MITRE Mapping	Displays the custom Scheduled Query rules I authored. It specifically highlights the mapping of detection logic to MITRE ATT&CK tactics (e.g., T1110 for Brute Force) to ensure comprehensive defensive coverage.

@@ -1,0 +1,1 @@
+Telemetry Ingestion Health & Connector Status	Shows the active status of the Security Events (via AMA) and Azure Activity connectors. This proves the "Data Pipeline" is successfully pulling logs from all distributed Hub and Spoke workloads.

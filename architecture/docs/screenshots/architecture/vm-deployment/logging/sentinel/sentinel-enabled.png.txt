@@ -1,0 +1,1 @@
+Deployment of Microsoft Sentinel SIEM	Confirms the successful activation of the Sentinel SIEM layer on top of the law-zero-trust-soc workspace. This establishes the centralized "Security Brain" for the multi-VNet architecture.

@@ -1,0 +1,1 @@
+Execution of High-Velocity Brute-Force Script	**** Shows the simulate-bruteforce.ps1 script running from CLIENT01 targeting the Spoke VM. This represents the "Initial Access" attempt (MITRE T1110).

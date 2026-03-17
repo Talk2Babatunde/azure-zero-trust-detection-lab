@@ -1,0 +1,1 @@
+Visual Topology: Multi-Region Hub-and-Spoke Architecture	This provides a high-level view of the entire network estate. It confirms the "Airport" design, where the Hub acts as the security checkpoint and the Spokes act as isolated terminal gates.

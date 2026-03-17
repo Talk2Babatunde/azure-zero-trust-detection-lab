@@ -1,0 +1,34 @@
+# --- Azure & Security ---
+# Exclude any local files that might contain Service Principal secrets or Tenant IDs
+*.env
+*.tfvars
+.azure/
+.azure-functions/
+
+# --- PowerShell ---
+# Exclude local history and temporary session files
+.history
+*.log
+*.pfx
+*.txt
+
+# --- Operating System ---
+# Windows specific junk
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# macOS specific junk
+.DS_Store
+
+# --- VS Code / IDE ---
+# Local workspace settings that shouldn't be shared
+.vscode/
+.idea/
+*.swp
+
+# --- Documentation/Media ---
+# Only allow specific image formats in your screenshots folder
+# If you have raw, unedited large video files or temp exports, block them:
+*.tmp
+*.bak

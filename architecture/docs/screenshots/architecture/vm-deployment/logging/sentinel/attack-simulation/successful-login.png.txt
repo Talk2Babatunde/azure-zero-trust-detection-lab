@@ -1,0 +1,1 @@
+Initial Foothold: Successful RDP Authentication (4624)	Shows the moment the attacker script guesses the correct password. In the logs, this appears as an "Audit Success," signaling that the perimeter has been breached and the attacker is now inside.

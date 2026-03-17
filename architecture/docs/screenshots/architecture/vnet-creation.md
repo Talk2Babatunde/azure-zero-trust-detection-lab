@@ -1,0 +1,1 @@
+Virtual Network Provisioning & SegmentationConfirms the creation of three distinct VNets (Hub-VNet, Spoke-01, Spoke-02) with non-overlapping IP address spaces ($10.2.0.0/16$, $10.3.0.0/16$, and $10.4.0.0/16$), following enterprise networking standards.

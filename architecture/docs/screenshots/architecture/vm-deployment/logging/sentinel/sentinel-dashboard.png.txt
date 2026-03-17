@@ -1,0 +1,1 @@
+Security Operations (SecOps) Command Center	A "Single Pane of Glass" view showing real-time event volume, active alerts, and incident trends. This represents the interface an analyst uses to monitor the security posture across the entire estate.

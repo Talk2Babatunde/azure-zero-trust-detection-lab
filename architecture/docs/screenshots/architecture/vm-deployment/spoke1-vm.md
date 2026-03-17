@@ -1,0 +1,1 @@
+Spoke 1 Workload Deployment (APP-SRV01)	Shows the target system for initial access simulations. This VM is placed in a dedicated App-Subnet within the first spoke, simulating an enterprise application server that serves as the attacker's "Initial Foothold."

@@ -1,0 +1,1 @@
+Azure Monitor Agent (AMA) Extension Status	Verification of the modern agent deployment on the Spoke VMs. Unlike the legacy MMA agent, the AMA agent is the current standard for Zero-Trust environments, providing more granular control over data streams

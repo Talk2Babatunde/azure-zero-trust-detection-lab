@@ -1,0 +1,1 @@
+Azure Monitor Data Collection Rule (DCR) Configuration	**** This proves you are practicing Efficient Logging. It shows you have filtered for specific high-value streams like SecurityEvent and AzureActivity to reduce noise and cost.
