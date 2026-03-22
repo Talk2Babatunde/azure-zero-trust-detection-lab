@@ -2,6 +2,9 @@
 
 This document provides a high-level blueprint of the Azure infrastructure engineered for this project. The architecture utilizes a **Hub-and-Spoke topology** across multiple regions to isolate workloads, centralize security management, and enforce strict Zero-Trust access controls.
 
+<img width="1920" height="892" alt="image98" src="https://github.com/user-attachments/assets/2565f462-bfaa-4fc2-a78d-0be7bbda7c8e" />
+
+
 ---
 
 ## 🏗️ Architectural Blueprint
