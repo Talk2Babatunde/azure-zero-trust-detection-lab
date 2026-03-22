@@ -1,9 +1,56 @@
-## Enterprise Zero-Trust Architecture
+# 🏛️ Architecture Overview: Zero-Trust Hub-and-Spoke
+
+This document provides a high-level blueprint of the Azure infrastructure engineered for this project. The architecture utilizes a **Hub-and-Spoke topology** across multiple regions to isolate workloads, centralize security management, and enforce strict Zero-Trust access controls.
+
+---
+
+## 🏗️ Architectural Blueprint
+
+The infrastructure is segmented into three primary Virtual Networks (VNets) deployed across distinct Azure regions to simulate a distributed enterprise environment.
+
+![High-Level Azure Hub and Spoke Architecture Overview](../screenshots/architecture/architecture-overview.png)
+
+      Figure 1 — Hub-and-Spoke Zero-Trust Architecture with centralized monitoring and security services deployed in the hub network.
+
+### 📂 Resource Organization
+* **Subscription:** Visual Studio Enterprise / Personal Pay-As-You-Go
+* **Resource Group:** `hub-and-spoke-topology`
+* **Regions deployed:** US West 2 (Hub) and West US (Spokes)
+
+---
+
+## 🧩 Core Components
+
+### 🛡️ 1. The Hub VNet (`hub-vnet`)
+The Hub acts as the centralized transit and security inspection point. It does not host standard user applications.
+* **Log Analytics Workspace (`hub-law`):** The central data lake for telemetry.
+* **Microsoft Sentinel:** Cloud-native SIEM overlaid on the LAW for detection engineering.
+* **Azure Bastion Subnet:** Secure, browser-based RDP/SSH access (no Public IPs on VMs).
+* **Virtual Network Gateway Subnet:** Secure site-to-site or point-to-site connectivity.
+
+### 🖥️ 2. Spoke 1 VNet (`spoke1-vnet`)
+Isolated network environment hosting tier-1 production workloads.
+* **Workload:** `app-vm1` (Windows Server Application).
+* **Security Control:** Outfitted with Network Security Groups (NSGs) and the Azure Monitor Agent (AMA).
+
+### 💻 3. Spoke 2 VNet (`spoke2-vnet`)
+Isolated network environment hosting internal client systems or test labs.
+* **Workload:** `client-vm2` (Windows Server Client).
+* **Security Control:** Protected by NSGs and monitored via the AMA agent.
+
+---
+
+## ⚙️ Key Engineering Concepts Applied
+
+### 🔒 1. Micro-Segmentation & VNet Peering
+Spokes cannot communicate directly with each other (No Mesh). All East-West traffic between `spoke1` and `spoke2` must traverse the peering into the Hub, establishing a deterministic network chokepoint.
+
+### 📜 2. Zero-Trust Access (Least Privilege)
+No virtual machines are assigned Public IP addresses. Administrative access is strictly routed through **Azure Bastion** or internal gateways, drastically reducing the external attack surface.
+
+### 📡 3. Regional Fault Tolerance
+By deploying Spokes in separate regions from the Hub, the architecture mirrors enterprise availability standards, proving capability in managing multi-region latency and routing tables.
 
 
 
-<img width="1376" height="768" alt="image68" src="https://github.com/user-attachments/assets/e48859b5-869b-4a4f-86b4-c74a1e22b516" />
-
-
-
-     Figure 1 — Hub-and-Spoke Zero-Trust Architecture with centralized monitoring and security services deployed in the hub network.
+    
