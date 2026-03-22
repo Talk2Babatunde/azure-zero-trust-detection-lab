@@ -1,21 +1,33 @@
-# 🛰️ Network Traffic & Telemetry Flow
+# 🛰️ Network and Telemetry Flow Diagram
 
-This document details the bidirectional traffic routing between the Hub and Spokes, as well as the Telemetry Pipeline streaming data to Microsoft Sentinel.
-[
-![Network Flow Diagram](../screenshots/architecture/network-flow-diagram.png)](https://private-user-images.githubusercontent.com/220100440/567401574-e48859b5-869b-4a4f-86b4-c74a1e22b516.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzQxODE3NjAsIm5iZiI6MTc3NDE4MTQ2MCwicGF0aCI6Ii8yMjAxMDA0NDAvNTY3NDAxNTc0LWU0ODg1OWI1LTg2OWItNGE0Zi04NmI0LWM3NGExZTIyYjUxNi5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwMzIyJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDMyMlQxMjExMDBaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1iMjk2M2JiYjA4YzM1Yzg4ODllZjNiZjhiZTU5MjNmYzQzYjY0NTAzOTFiYmE4ZDJkYTlhYjU5NDQ2MjNjNjk3JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.Bq1gDb42-0yxGBcQ1GC3OoJ1vbOpvmf2qziVyU9oGYQ)
+This document illustrates the architectural flow of network traffic and security telemetry within our multi-region Azure environment. It highlights the centralized logging mechanism and zero-trust routing constraints.
 
----
 
-## 🚦 Traffic Flow Analysis
+<img width="1376" height="768" alt="image68" src="https://github.com/user-attachments/assets/dbfaf96e-b4d0-43dd-8356-c84b7a3a4e51" />
 
-| Traffic Type | Pathway | Security Control |
-| :--- | :--- | :--- |
-| **Ingress (Internet to App)** | External ➔ Hub ➔ Spoke 02 | Traffic hits the Hub perimeter first. No direct public internet access is permitted on the Spoke workloads. |
-| **Lateral Movement (East-West)** | Spoke 03 (Client) ➔ Hub ➔ Spoke 02 (App) | To move from the test client to the application server, traffic must traverse VNet Peering through the Hub transit. |
-| **Telemetry Pipeline (South-North)** | Spoke Workloads ➔ Azure Monitor Agent ➔ Hub LAW | Standard Event logs (such as Audit Failure 4625) bypass local persistence and stream directly via the AMA to the central Log Analytics Workspace. |
+     I designed the architecture so that compute is isolated in the Spokes, but intelligence is centralized in the Hub. By using DCRs and the AMA agent, I verify that an audit failure on a remote Spoke is immediately actionable in Microsoft Sentinel, giving us real-time visibility without exposing the workloads to the public internet.
 
 ---
 
-## 🛡️ Zero-Trust Design Validation
+## 🚦 Architectural Traffic Streams
 
-By forcing East-West traffic (lateral movement between Spoke 02 and Spoke 03) through the Hub, we establish a deterministic chokepoint. This ensures that an adversary cannot pivot between workloads without crossing a monitored boundary.
+### 1. The Telemetry Pipeline (North-South Flow)
+* **Mechanism:** Data Collection Rules (DCRs) push specific Windows Event logs via the Azure Monitor Agent (AMA) installed on isolated Spoke VMs.
+* **Routing:** Logs traverse VNet Peerings into the Hub VNet.
+* **Storage and Analysis:** Logs are ingested into the central Log Analytics Workspace (`hub-law`) for **Microsoft Sentinel** correlation and alerting.
+
+### 2. The Management Plane (Secure Inbound Access)
+* **Azure Bastion:** Provides secure, browser-based RDP access to the VMs without exposing public ports (like 3389) to the internet.
+* **VPN Gateway:** Serves as a secure tunnel for administrator traffic to enter the Hub environment.
+
+### 3. Lateral Movement Boundaries (East-West Flow)
+* **Isolation:** The `spoke1-vnet` and `spoke2-vnet` are not peered directly together.
+* **Enforcement:** Network Security Groups (NSGs) act as local micro-perimeters, ensuring lateral movement between Spokes must be forced through the Hub and monitored by Microsoft Sentinel.
+
+---
+
+## (The Zero-Trust Advantage)
+
+By utilizing this specific Hub-and-Spoke model with standard logging pipelines, we achieve:
+1. **Reduced Costs:** We share a single Microsoft Sentinel instance and Azure Firewall instance across the enterprise rather than deploying them per Spoke.
+2. **Deterministic Chokepoints:** An attacker who compromises `client-vm2` cannot reach `app-vm1` without crossing a monitored VNet peering, triggering high-fidelity alerts.
