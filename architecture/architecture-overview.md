@@ -1,6 +1,5 @@
 ## Enterprise Zero-Trust Architecture
 
-![Hub Spoke Architecture](architecture/hub-spoke-topology.png) 
 
 
 <img width="1376" height="768" alt="image68" src="https://github.com/user-attachments/assets/e48859b5-869b-4a4f-86b4-c74a1e22b516" />
