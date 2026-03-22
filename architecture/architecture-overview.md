@@ -45,6 +45,9 @@ Isolated network environment hosting internal client systems or test labs.
 ### 🔒 1. Micro-Segmentation & VNet Peering
 Spokes cannot communicate directly with each other (No Mesh). All East-West traffic between `spoke1` and `spoke2` must traverse the peering into the Hub, establishing a deterministic network chokepoint.
 
+<img width="1920" height="892" alt="image37" src="https://github.com/user-attachments/assets/b77085ae-102e-47d1-bdcf-3ee0d098730c" />
+
+
 ### 📜 2. Zero-Trust Access (Least Privilege)
 No virtual machines are assigned Public IP addresses. Administrative access is strictly routed through **Azure Bastion** or internal gateways, drastically reducing the external attack surface.
 
