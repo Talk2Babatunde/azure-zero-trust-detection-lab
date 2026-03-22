@@ -8,7 +8,8 @@ This document provides a high-level blueprint of the Azure infrastructure engine
 
 The infrastructure is segmented into three primary Virtual Networks (VNets) deployed across distinct Azure regions to simulate a distributed enterprise environment.
 
-![High-Level Azure Hub and Spoke Architecture Overview](../screenshots/architecture/architecture-overview.png)
+<img width="1893" height="672" alt="image45" src="https://github.com/user-attachments/assets/1e39e39e-1668-4d52-a141-6c78680aa1ce" />
+
 
       Figure 1 — Hub-and-Spoke Zero-Trust Architecture with centralized monitoring and security services deployed in the hub network.
 
