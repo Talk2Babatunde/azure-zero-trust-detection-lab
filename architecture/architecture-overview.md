@@ -52,8 +52,12 @@ Spokes cannot communicate directly with each other (No Mesh). All East-West traf
 <img width="1920" height="892" alt="image37" src="https://github.com/user-attachments/assets/b77085ae-102e-47d1-bdcf-3ee0d098730c" />
 
 
-### 📜 2. Zero-Trust Access (Least Privilege)
-No virtual machines are assigned Public IP addresses. Administrative access is strictly routed through **Azure Bastion** or internal gateways, drastically reducing the external attack surface.
+### 2. Controlled External Exposure for Threat Simulation
+
+Public IP addresses were intentionally assigned to both Hub and Spoke virtual machines to simulate real-world internet-facing workloads. Access was restricted using Network Security Groups (NSGs), allowing only specific management ports (e.g., RDP) from defined sources.
+
+This design enabled the simulation of external attack vectors such as brute-force attempts while still maintaining controlled access boundaries and monitoring through centralized logging in Microsoft Sentinel.
+
 
 ### 📡 3. Regional Fault Tolerance
 By deploying Spokes in separate regions from the Hub, the architecture mirrors enterprise availability standards, proving capability in managing multi-region latency and routing tables.
