@@ -29,7 +29,8 @@ The infrastructure is segmented into three primary Virtual Networks (VNets) depl
 The Hub acts as the centralized transit and security inspection point. It does not host standard user applications.
 * **Log Analytics Workspace (`law-zero-trust-soc`):** The central data lake for telemetry.
 * **Microsoft Sentinel:** Cloud-native SIEM overlaid on the LAW for detection engineering.
-* **Azure Bastion Subnet:** Secure, browser-based RDP/SSH access (no Public IPs on VMs).
+* **Azure Bastion Subnet:** Secure, browser-based RDP/SSH access.
+* **Public IP Exposure (Controlled Access):** VMs use Public IPs to simulate internet-facing workloads, with RDP/SSH restricted via NSGs to authorized sources.
 * **Virtual Network Gateway Subnet:** Secure site-to-site or point-to-site connectivity.
 
 ### 🖥️ 2. Spoke 1 VNet (`spoke1-vnet`)
