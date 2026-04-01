@@ -6,7 +6,10 @@ In a cloud environment, local logs are "volatile"—an attacker can clear them t
 ## ⚙️ Technical Implementation: The AMA + DCR Model
 I utilized the modern **Azure Monitor Agent (AMA)** and **Data Collection Rules (DCR)** to manage telemetry ingestion. This provides more granular control over which events are collected, reducing "noise" and saving on data ingestion costs.
 
-Figure 7 — Data Collection Rule configuration used to deploy Azure Monitor Agent and collect security logs from all VMs.
+<img width="1920" height="892" alt="image4" src="https://github.com/user-attachments/assets/269cbc31-6934-4a21-9898-4cb6e102a11d" />
+
+
+     Figure: Data Collection Rule configuration used to deploy Azure Monitor Agent and collect security logs from all VMs.
 
 ### Ingestion Pipeline
 1.  **Endpoints:** Windows/Linux VMs in Spoke networks.
