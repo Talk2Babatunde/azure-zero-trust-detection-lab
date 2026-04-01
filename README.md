@@ -3,6 +3,11 @@
 ## 🛡️ Project Overview
 This project simulates a real-world cloud compromise inside a Microsoft Azure tenant. It demonstrates how a **Zero-Trust architecture** combined with centralized telemetry and **Microsoft Sentinel** detection engineering can identify and correlate multi-stage attacker behavior.
 
+<img width="1920" height="892" alt="image7" src="https://github.com/user-attachments/assets/862abb8e-9114-4453-9953-f526bd3666bc" />
+
+     Custom KQL rule detecting suspicious authentication activity.
+
+
 The environment models an enterprise hub-and-spoke network architecture where multiple attack stages are simulated across segmented workloads to test the efficacy of modern security operations.
 
 ---
