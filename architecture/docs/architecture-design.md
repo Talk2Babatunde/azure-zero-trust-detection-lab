@@ -3,6 +3,10 @@
 ## 🌐 The Design Philosophy
 The lab environment utilizes a **Hub-and-Spoke topology**, the gold standard for enterprise cloud networking. This design enforces **Network Segmentation** and **Centralized Egress/Ingress**, which are core pillars of a Zero-Trust strategy.
 
+
+<img width="1536" height="1024" alt="image24" src="https://github.com/user-attachments/assets/c1951c00-36ba-4a19-9924-a0f0d6531463" />
+
+
 ---
 
 ## 🏛️ Component Breakdown
