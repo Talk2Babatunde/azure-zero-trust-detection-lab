@@ -11,6 +11,9 @@ This document illustrates the architectural flow of network traffic and security
 
 ## 🚦 Architectural Traffic Streams
 
+<img width="1920" height="892" alt="image4" src="https://github.com/user-attachments/assets/1e6b85d2-9d9c-4177-a198-c2fdfa3ea1d4" />
+
+
 ### 1. The Telemetry Pipeline (North-South Flow)
 * **Mechanism:** Data Collection Rules (DCRs) push specific Windows Event logs via the Azure Monitor Agent (AMA) installed on isolated Spoke VMs.
 * **Routing:** Logs traverse VNet Peerings into the Hub VNet.
