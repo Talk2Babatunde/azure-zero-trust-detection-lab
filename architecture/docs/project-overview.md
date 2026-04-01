@@ -6,6 +6,12 @@ Modern cloud environments are frequently compromised through identity-centric at
 ## 🚀 Project Vision
 This project simulates a realistic multi-stage cloud intrusion inside a Microsoft Azure tenant. The goal is to demonstrate how a **Zero-Trust monitoring architecture** can detect attacker activity at every stage of the lifecycle—from initial access to data exfiltration.
 
+<img width="1920" height="892" alt="image" src="https://github.com/user-attachments/assets/79796bed-c57d-412d-9f95-90f7e54b2611" />
+
+     *Figure — Azure Network Manager deployment view showing successful rollout of Hub-and-Spoke connectivity configurations across multiple regions, supporting centralized control and segmentation within the Zero Trust architecture.*
+
+
+
 The environment was engineered to replicate enterprise cloud infrastructure using a **Hub-and-Spoke network topology**, ensuring that workloads are isolated while security controls remain centralized.
 
 ---
